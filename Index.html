@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>History of Cryptocurrency</title>
+
+<style>
+
+/* GENERAL PAGE DESIGN */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #111111;
+    color: #ffffff;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 25px 15px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 0 0 4px;
+    color: #e4bd67;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #aaaaaa;
+    margin: 0 0 24px;
+}
+
+
+/* TIMELINE */
+
+.timeline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+    max-width: 950px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: #8c713d;
+}
+
+.event {
+    position: relative;
+    z-index: 1;
+    width: 20%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.circle {
+    width: 17px;
+    height: 17px;
+    background: #111111;
+    border: 2px solid #c9a34e;
+    border-radius: 50%;
+    margin: 0 auto 9px;
+    transition: 0.25s;
+}
+
+.event:hover .circle {
+    background: #d6b15c;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px #c9a34e;
+}
+
+.event h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e4bd67;
+    margin: 0 0 4px;
+}
+
+.event p {
+    font-size: 10px;
+    color: #aaaaaa;
+    margin: 0;
+    line-height: 1.4;
+}
+
+
+/* DETAIL PAGE */
+
+#detailPage {
+    display: none;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    background: #111111;
+    color: white;
+    text-align: left;
+}
+
+#detailPage h1 {
+    color: #e4bd67;
+    font-size: 25px;
+    margin: 15px 0 5px;
+}
+
+#detailDate {
+    color: #999999;
+    font-size: 13px;
+}
+
+#detailPage h3 {
+    font-size: 14px;
+    color: #e4bd67;
+    margin-bottom: 8px;
+}
+
+
+/* SIDE-BY-SIDE EVENT LAYOUT */
+
+.event-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+    margin: 20px 0 25px;
+}
+
+.event-copy {
+    min-width: 0;
+}
+
+.event-description {
+    color: #dddddd;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.event-visual {
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* ORIGINAL WHITEPAPER SCREENSHOT */
+
+.whitepaper-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 540px;
+    object-fit: contain;
+    object-position: top;
+    background: #ffffff;
+    border: 1px solid #8c713d;
+    border-radius: 5px;
+}
+
+
+/* WHITEPAPER CAPTION */
+
+.paper-caption {
+    color: #aaaaaa;
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+
+/* FULL WHITEPAPER BUTTON */
+
+.paper-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #c9a34e;
+    color: #111111;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #e4bd67;
+    transition: 0.2s;
+}
+
+.paper-link:hover {
+    background: #e4bd67;
+    transform: scale(1.02);
+}
+
+
+/* BACKUP LINK */
+
+.backup-link {
+    display: block;
+    text-align: center;
+    color: #e4bd67;
+    font-size: 11px;
+    margin-top: 12px;
+    text-decoration: none;
+}
+
+.backup-link:hover {
+    text-decoration: underline;
+}
+
+
+/* OTHER EVENT IMAGES */
+
+.event-image {
+    display: block;
+    width: 100%;
+    max-height: 380px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #8c713d;
+    background: #ffffff;
+    padding: 10px;
+}
+
+
+/* IMAGE ERROR MESSAGE */
+
+.image-error {
+    display: none;
+    color: #e4bd67;
+    background: #1c1c1c;
+    border: 1px solid #8c713d;
+    padding: 15px;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* NOTES SECTION */
+
+textarea {
+    width: 100%;
+    height: 220px;
+    padding: 14px;
+    background: #1c1c1c;
+    color: #ffffff;
+    border: 1px solid #8c713d;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #e4bd67;
+}
+
+
+/* BUTTONS */
+
+button {
+    padding: 8px 15px;
+    border: 1px solid #c9a34e;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 12px;
+    transition: 0.2s;
+}
+
+.back {
+    background: transparent;
+    color: #e4bd67;
+}
+
+.save {
+    background: #c9a34e;
+    color: #111111;
+    font-weight: bold;
+    margin-left: 7px;
+}
+
+button:hover {
+    background: #e4bd67;
+    color: #111111;
+}
+
+#saveMessage {
+    color: #e4bd67;
+    font-size: 12px;
+}
+
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 650px) {
+
+    .container {
+        padding: 12px 8px;
+    }
+
+    h1 {
+        font-size: 19px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        margin-bottom: 22px;
+    }
+
+    .event h3 {
+        font-size: 10px;
+    }
+
+    .event p {
+        font-size: 9px;
+    }
+
+    .circle {
+        width: 15px;
+        height: 15px;
+    }
+
+    .timeline::before {
+        top: 7px;
+    }
+
+    #detailPage {
+        padding: 12px;
+    }
+
+    .event-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .whitepaper-image {
+        max-height: none;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- MAIN TIMELINE -->
+
+<div class="container" id="timelinePage">
+
+    <h1>History of Cryptocurrency: Niche to Mainstream</h1>
+
+    <p class="subtitle">
+        Explore the key milestones in cryptocurrency history.
+    </p>
+
+    <div class="timeline">
+
+        <div class="event" onclick="openDate(0)">
+
+            <div class="circle"></div>
+
+            <h3>2008</h3>
+
+            <p>Bitcoin Introduced</p>
+
+        </div>
+
+
+        <div class="event" onclick="openDate(1)">
+
+            <div class="circle"></div>
+
+            <h3>2009</h3>
+
+            <p>Bitcoin Launches</p>
+
+        </div>
+
+
+        <div class="event" onclick="openDate(2)">
+
+            <div class="circle"></div>
+
+            <h3>2010</h3>
+
+            <p>Bitcoin Pizza Day</p>
+
+        </div>
+
+
+        <div class="event" onclick="openDate(3)">
+
+            <div class="circle"></div>
+
+            <h3>2015</h3>
+
+            <p>Ethereum Launches</p>
+
+        </div>
+
+
+        <div class="event" onclick="openDate(4)">
+
+            <div class="circle"></div>
+
+            <h3>2024</h3>
+
+            <p>Bitcoin ETFs Approved</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- INDIVIDUAL EVENT PAGE -->
+
+<div id="detailPage">
+
+    <button class="back" onclick="goBack()">
+        ← Back to Timeline
+    </button>
+
+
+    <h1 id="detailTitle">Event Details</h1>
+
+    <p id="detailDate"></p>
+
+
+    <!-- DESCRIPTION LEFT / IMAGE RIGHT -->
+
+    <div class="event-layout">
+
+
+        <!-- EVENT DESCRIPTION -->
+
+        <div class="event-copy">
+
+            <div
+                id="eventDescription"
+                class="event-description">
+            </div>
+
+        </div>
+
+
+        <!-- EVENT IMAGE OR DOCUMENT -->
+
+        <div
+            class="event-visual"
+            id="eventVisual">
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ADDITIONAL NOTES -->
+
+    <h3>Your Additional Notes</h3>
+
+    <textarea
+        id="eventText"
+        placeholder="Add your own additional information here..."
+    ></textarea>
+
+    <br>
+
+    <button class="save" onclick="saveText()">
+        Save Information
+    </button>
+
+    <p id="saveMessage"></p>
+
+</div>
+
+
+
+<script>
+
+
+// FIVE TIMELINE EVENTS
+
+const events = [
+
+    {
+        date: "October 31, 2008",
+
+        title: "2008 - Bitcoin Is Introduced",
+
+        description: "Bitcoin was introduced when an unknown person or group using the name Satoshi Nakamoto published a paper titled Bitcoin: A Peer-to-Peer Electronic Cash System. The paper explained a new type of digital currency that could be transferred without needing to go through a bank or other financial institution. Bitcoin was designed using blockchain technology, which publicly records transaction information. This was important because it introduced the first decentralized digital currency that could operate over the internet.",
+
+        paper: true
+    },
+
+
+    {
+        date: "January 3-12, 2009",
+
+        title: "2009 - Bitcoin Officially Launches",
+
+        description: "Bitcoin's network officially began when Satoshi Nakamoto mined the first block, known as the Genesis Block. Shortly afterward, the first Bitcoin transaction took place.",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"
+    },
+
+
+    {
+        date: "May 22, 2010",
+
+        title: "2010 - Bitcoin Pizza Day",
+
+        description: "Programmer Laszlo Hanyecz paid 10,000 bitcoins for two pizzas. This became one of the first famous real-world purchases using Bitcoin and demonstrated that cryptocurrency could be used to buy everyday products.",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"
+    },
+
+
+    {
+        date: "July 30, 2015",
+
+        title: "2015 - Ethereum Launches",
+
+        description: "Ethereum officially launched, introducing a blockchain platform that allowed developers to create smart contracts and decentralized applications. This expanded the possibilities of blockchain technology beyond digital currency.",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/0/05/Ethereum_logo_2014.svg"
+    },
+
+
+    {
+        date: "January 10, 2024",
+
+        title: "2024 - Bitcoin ETFs Are Approved",
+
+        description: "The United States approved its first spot Bitcoin exchange-traded products. This allowed investors to gain exposure to Bitcoin through traditional investment accounts and marked an important step toward cryptocurrency entering mainstream finance.",
+
+        image: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"
+    }
+
+];
+
+
+let currentEvent = 0;
+
+
+
+// OPEN EVENT PAGE
+
+function openDate(index) {
+
+    currentEvent = index;
+
+
+    // HIDE TIMELINE
+
+    document.getElementById("timelinePage").style.display = "none";
+
+
+    // SHOW DETAIL PAGE
+
+    document.getElementById("detailPage").style.display = "block";
+
+
+    // UPDATE EVENT TITLE
+
+    document.getElementById("detailTitle").innerText =
+        events[index].title;
+
+
+    // UPDATE DATE
+
+    document.getElementById("detailDate").innerText =
+        events[index].date;
+
+
+    // UPDATE DESCRIPTION
+
+    document.getElementById("eventDescription").innerText =
+        events[index].description;
+
+
+
+    // DISPLAY ORIGINAL WHITEPAPER SCREENSHOT FOR 2008
+
+    if (events[index].paper) {
+
+        document.getElementById("eventVisual").innerHTML = `
+
+            <img
+                class="whitepaper-image"
+                src="bitcoin-whitepaper-page1.png"
+                alt="First page of Satoshi Nakamoto's original Bitcoin whitepaper"
+                onerror="this.style.display='none'; document.getElementById('whitepaperError').style.display='block';">
+
+
+            <div
+                class="image-error"
+                id="whitepaperError">
+
+                The whitepaper screenshot could not be loaded.
+
+                Make sure bitcoin-whitepaper-page1.png
+                is in the same folder as your HTML file.
+
+            </div>
+
+
+            <p class="paper-caption">
+
+                Original Bitcoin Whitepaper
+
+                <br>
+
+                Satoshi Nakamoto - October 31, 2008
+
+            </p>
+
+
+
+            <!-- FULL WHITEPAPER BUTTON -->
+
+            <a
+                class="paper-link"
+                href="https://bitcoin.org/bitcoin.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                VIEW THE FULL WHITEPAPER (ALL PAGES) ↗
+
+            </a>
+
+
+
+            <!-- BACKUP OFFICIAL WHITEPAPER LINK -->
+
+            <a
+                class="backup-link"
+                href="https://bitcoin.org/en/bitcoin-paper"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                View the official Bitcoin whitepaper webpage
+
+            </a>
+
+        `;
+
+    }
+
+
+    // DISPLAY OTHER EVENT IMAGES
+
+    else {
+
+        document.getElementById("eventVisual").innerHTML = `
+
+            <img
+                class="event-image"
+                src="${events[index].image}"
+                alt="Historical cryptocurrency event">
+
+        `;
+
+    }
+
+
+
+    // LOAD PREVIOUSLY SAVED NOTES
+
+    document.getElementById("eventText").value =
+
+        localStorage.getItem("cryptoEvent" + index) || "";
+
+
+
+    // CLEAR SAVE MESSAGE
+
+    document.getElementById("saveMessage").innerText = "";
+
+}
+
+
+
+// RETURN TO TIMELINE
+
+function goBack() {
+
+    document.getElementById("detailPage").style.display = "none";
+
+    document.getElementById("timelinePage").style.display = "block";
+
+}
+
+
+
+// SAVE ADDITIONAL NOTES
+
+function saveText() {
+
+    const text = document.getElementById("eventText").value;
+
+
+    localStorage.setItem(
+        "cryptoEvent" + currentEvent,
+        text
+    );
+
+
+    document.getElementById("saveMessage").innerText =
+
+        "Information saved successfully!";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
+
