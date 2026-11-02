@@ -1,12 +1,9 @@
-```
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>History of Cryptocurrency</title>
 
 <style>
@@ -365,12 +362,9 @@ button:hover {
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <!-- MAIN TIMELINE -->
 
@@ -385,63 +379,38 @@ button:hover {
     <div class="timeline">
 
         <div class="event" onclick="openDate(0)">
-
             <div class="circle"></div>
-
             <h3>2008</h3>
-
             <p>Bitcoin Introduced</p>
-
         </div>
-
 
         <div class="event" onclick="openDate(1)">
-
             <div class="circle"></div>
-
             <h3>2009</h3>
-
             <p>Bitcoin Launches</p>
-
         </div>
-
 
         <div class="event" onclick="openDate(2)">
-
             <div class="circle"></div>
-
             <h3>2010</h3>
-
             <p>Bitcoin Pizza Day</p>
-
         </div>
-
 
         <div class="event" onclick="openDate(3)">
-
             <div class="circle"></div>
-
             <h3>2015</h3>
-
             <p>Ethereum Launches</p>
-
         </div>
 
-
         <div class="event" onclick="openDate(4)">
-
             <div class="circle"></div>
-
             <h3>2024</h3>
-
             <p>Bitcoin ETFs Approved</p>
-
         </div>
 
     </div>
 
 </div>
-
 
 
 <!-- INDIVIDUAL EVENT PAGE -->
@@ -452,40 +421,27 @@ button:hover {
         ← Back to Timeline
     </button>
 
-
     <h1 id="detailTitle">Event Details</h1>
 
     <p id="detailDate"></p>
-
 
     <!-- DESCRIPTION LEFT / IMAGE RIGHT -->
 
     <div class="event-layout">
 
-
-        <!-- EVENT DESCRIPTION -->
-
         <div class="event-copy">
-
             <div
                 id="eventDescription"
                 class="event-description">
             </div>
-
         </div>
-
-
-        <!-- EVENT IMAGE OR DOCUMENT -->
 
         <div
             class="event-visual"
             id="eventVisual">
         </div>
 
-
     </div>
-
-
 
     <!-- ADDITIONAL NOTES -->
 
@@ -507,9 +463,7 @@ button:hover {
 </div>
 
 
-
 <script>
-
 
 // FIVE TIMELINE EVENTS
 
@@ -525,7 +479,6 @@ const events = [
         paper: true
     },
 
-
     {
         date: "January 3, 2009",
 
@@ -533,9 +486,8 @@ const events = [
 
         description: "Bitcoin officially began operating on January 3, 2009, when its first block, known as the Genesis Block, was created, marking the beginning of the Bitcoin network. Bitcoin used blockchain technology to record transactions on a shared digital ledger, allowing users to transfer value directly to one another. This launch established the foundations for the cryptocurrency industry and influenced the development of other digital currencies.",
 
-        image: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"
+        image: "bitcoin-genesis-block.png"
     },
-
 
     {
         date: "May 22, 2010",
@@ -544,9 +496,8 @@ const events = [
 
         description: "On May 22, 2010, the first known purchase of physical goods using Bitcoin was made. A programmer paid 10,000 Bitcoins for two pizzas. At the time, Bitcoin had little to no monetary value, making this an important milestone in crypto history. The purchase demonstrated how Bitcoin could be used as a real payment method rather than simple online trading. Today, May 22 is celebrated by people in the crypto space annually as Bitcoin Pizza Day to remember how far cryptocurrency has developed since.",
 
-        image: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"
+        image: "bitcoin-pizza-day.png"
     },
-
 
     {
         date: "July 30, 2015",
@@ -555,9 +506,8 @@ const events = [
 
         description: "Ethereum officially launched on July 30, 2015, introducing a new type of blockchain technology that expanded beyond Bitcoin. Unlike Bitcoin, Ethereum allowed developers to create smart contracts, which are programs that automatically carry out transactions when certain conditions are met. This technology made it possible to build decentralized applications, digital marketplaces, and other services without relying on traditional companies. Ethereum became the second most influential cryptocurrency and expanded the possibilities of blockchain technology.",
 
-        image: "https://upload.wikimedia.org/wikipedia/commons/0/05/Ethereum_logo_2014.svg"
+        image: "ethereum-launch.png"
     },
-
 
     {
         date: "January 10, 2024",
@@ -566,7 +516,7 @@ const events = [
 
         description: "On January 10, 2024, the United States Securities and Exchange Commission (SEC) approved Bitcoin exchange-traded products (ETPs), commonly known as Bitcoin ETFs. These investment products allowed people to gain exposure to Bitcoin’s price through traditional stock market accounts rather than purchasing and storing the cryptocurrency themselves. This was a major milestone because it increased Bitcoin’s connection to traditional financial markets and made it much more accessible to new, less knowledgeable investors. It also represented a major step in the acceptance of cryptocurrency as an asset to be invested in.",
 
-        image: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"
+        image: "bitcoin-etf-approval.png"
     }
 
 ];
@@ -575,41 +525,34 @@ const events = [
 let currentEvent = 0;
 
 
-
 // OPEN EVENT PAGE
 
 function openDate(index) {
 
     currentEvent = index;
 
-
     // HIDE TIMELINE
 
     document.getElementById("timelinePage").style.display = "none";
 
-
     // SHOW DETAIL PAGE
 
     document.getElementById("detailPage").style.display = "block";
-
 
     // UPDATE EVENT TITLE
 
     document.getElementById("detailTitle").innerText =
         events[index].title;
 
-
     // UPDATE DATE
 
     document.getElementById("detailDate").innerText =
         events[index].date;
 
-
     // UPDATE DESCRIPTION
 
     document.getElementById("eventDescription").innerText =
         events[index].description;
-
 
 
     // DISPLAY ORIGINAL WHITEPAPER SCREENSHOT FOR 2008
@@ -624,7 +567,6 @@ function openDate(index) {
                 alt="First page of Satoshi Nakamoto's original Bitcoin whitepaper"
                 onerror="this.style.display='none'; document.getElementById('whitepaperError').style.display='block';">
 
-
             <div
                 class="image-error"
                 id="whitepaperError">
@@ -636,7 +578,6 @@ function openDate(index) {
 
             </div>
 
-
             <p class="paper-caption">
 
                 Original Bitcoin Whitepaper
@@ -646,8 +587,6 @@ function openDate(index) {
                 Satoshi Nakamoto - October 31, 2008
 
             </p>
-
-
 
             <!-- FULL WHITEPAPER BUTTON -->
 
@@ -660,8 +599,6 @@ function openDate(index) {
                 VIEW THE FULL WHITEPAPER (ALL PAGES) ↗
 
             </a>
-
-
 
             <!-- BACKUP OFFICIAL WHITEPAPER LINK -->
 
@@ -679,7 +616,6 @@ function openDate(index) {
 
     }
 
-
     // DISPLAY OTHER EVENT IMAGES
 
     else {
@@ -689,28 +625,24 @@ function openDate(index) {
             <img
                 class="event-image"
                 src="${events[index].image}"
-                alt="Historical cryptocurrency event">
+                alt="Historical cryptocurrency event"
+                onerror="this.style.display='none'; this.parentElement.innerText='Image could not be loaded. Check that the image file is uploaded beside index.html.';">
 
         `;
 
     }
 
 
-
     // LOAD PREVIOUSLY SAVED NOTES
 
     document.getElementById("eventText").value =
-
         localStorage.getItem("cryptoEvent" + index) || "";
-
-
 
     // CLEAR SAVE MESSAGE
 
     document.getElementById("saveMessage").innerText = "";
 
 }
-
 
 
 // RETURN TO TIMELINE
@@ -724,32 +656,23 @@ function goBack() {
 }
 
 
-
 // SAVE ADDITIONAL NOTES
 
 function saveText() {
 
     const text = document.getElementById("eventText").value;
 
-
     localStorage.setItem(
         "cryptoEvent" + currentEvent,
         text
     );
 
-
     document.getElementById("saveMessage").innerText =
-
         "Information saved successfully!";
 
 }
 
-
 </script>
 
-
 </body>
-
 </html>
-
-```
